@@ -24,7 +24,7 @@ const Pontos = () => (
       <ImagePreviewBtn
         src={rep}
         title="República Qkické"
-        href="https://www.google.com/maps/place/R.+Bernardes+Filho,+229+-+Santa+Clara,+Vi%C3%A7osa+-+MG,+36570-000/@-20.7568839,-42.8879078,17z/data=!3m1!4b1!4m5!3m4!1s0xa367dcc366ee13:0xfb482e2793e69477!8m2!3d-20.7568873!4d-42.8864086"
+        href="https://www.google.com/maps/place/R.+Bernardes+Filho,+229+-+Vicosa,+Vi%C3%A7osa+-+MG,+36570-000/@-20.756808,-42.8883897,17z/data=!3m1!4b1!4m5!3m4!1s0xa367dcdb48244d:0x27a1a901a5d8d19e!8m2!3d-20.756813!4d-42.886201"
         showPlay={false}
       />
     </Stack>
