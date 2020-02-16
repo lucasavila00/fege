@@ -11,6 +11,7 @@ const Contato = () => (
       verticalAlign="center"
       horizontalAlign="center"
       tokens={{ childrenGap: "m" }}
+      style={{ width: "100%" }}
     >
       <HeaderText text="Contato" />
       <OutboundBtn

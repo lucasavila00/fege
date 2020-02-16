@@ -10,7 +10,7 @@ export const OutboundBtn: React.FunctionComponent<{
   href: string;
 }> = ({ title, href }) => {
   return (
-    <OutboundLink href={href}>
+    <OutboundLink href={href} style={{ width: "100%" }}>
       <PrimaryButton style={{ width: "100%" }}>
         {title}
       </PrimaryButton>
@@ -22,7 +22,7 @@ export const InboundBtn: React.FunctionComponent<{
   to: string;
 }> = ({ title, to }) => {
   return (
-    <Link to={to}>
+    <Link to={to} style={{ width: "100%" }}>
       <PrimaryButton style={{ width: "100%" }}>
         {title}
       </PrimaryButton>
@@ -30,13 +30,14 @@ export const InboundBtn: React.FunctionComponent<{
   );
 };
 
-export const VidBtn: React.FunctionComponent<{
+export const ImagePreviewBtn: React.FunctionComponent<{
   title: string;
   href: string;
   src: any;
-}> = ({ title, href, src }) => {
+  showPlay: boolean;
+}> = ({ title, href, src, showPlay }) => {
   return (
-    <OutboundLink href={href}>
+    <OutboundLink href={href} style={{ width: "100%" }}>
       <div
         style={{
           fontSize: 0,
@@ -54,24 +55,26 @@ export const VidBtn: React.FunctionComponent<{
             position: "relative",
           }}
         >
-          <div
-            style={{
-              position: "absolute",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "100%",
-              height: "100%",
-            }}
-          >
-            <img
-              src={play}
+          {showPlay && (
+            <div
               style={{
-                height: 96,
-                width: 96,
+                position: "absolute",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                height: "100%",
               }}
-            />
-          </div>
+            >
+              <img
+                src={play}
+                style={{
+                  height: 96,
+                  width: 96,
+                }}
+              />
+            </div>
+          )}
           <Image src={src} />
         </div>
         <PrimaryButton

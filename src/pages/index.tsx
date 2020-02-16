@@ -6,7 +6,7 @@ import { ProgressIndicator } from "office-ui-fabric-react/lib/ProgressIndicator"
 import {
   OutboundBtn,
   InboundBtn,
-  VidBtn,
+  ImagePreviewBtn,
 } from "../components/btns";
 import { sconfig } from "../components/config";
 
@@ -23,10 +23,11 @@ const Index: React.FunctionComponent = () => {
           title="Comprar Online"
           href={sconfig.online}
         />
-        <VidBtn
+        <ImagePreviewBtn
           src={video1}
           title="Mapa do Evento"
           href="https://www.youtube.com/watch?v=G2mhr6s2Tv8"
+          showPlay={true}
         />
         <InboundBtn to="/pontos" title="Pontos de Vendas" />
         <OutboundBtn

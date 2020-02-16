@@ -65,7 +65,6 @@ export const Layout: React.FunctionComponent = ({
           <Link to="/">
             <Image src={logo} />
           </Link>
-
           {children}
         </Stack>
       </Stack>
