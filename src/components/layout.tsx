@@ -7,6 +7,9 @@ import {
   loadTheme,
 } from "office-ui-fabric-react/lib/Styling";
 import { Helmet } from "react-helmet";
+import logo from "./capa.jpg";
+import { Image } from "./img";
+import { Link } from "gatsby";
 
 const myTheme = createTheme({
   palette: {
@@ -53,12 +56,16 @@ export const Layout: React.FunctionComponent = ({
 
       <Stack horizontalAlign="center">
         <Stack
-          tokens={{ padding: "m" }}
+          tokens={{ padding: "m", childrenGap: "s1" }}
           style={{
             width: "100%",
             maxWidth: 512,
           }}
         >
+          <Link to="/">
+            <Image src={logo} />
+          </Link>
+
           {children}
         </Stack>
       </Stack>
