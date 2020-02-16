@@ -8,7 +8,7 @@ import video1 from "./video1.jpg";
 import play from "./play.png";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { getTheme } from "office-ui-fabric-react/lib/Styling";
-
+import { ProgressIndicator } from "office-ui-fabric-react/lib/ProgressIndicator";
 // Please note that you can use https://github.com/dotansimha/graphql-code-generator
 // to generate all types from graphQL schema
 interface IndexPageProps {
@@ -106,33 +106,36 @@ const Index: React.FunctionComponent<IndexPageProps> = () => {
     <Layout>
       <Stack tokens={{ childrenGap: "m" }}>
         <Image src={logo} />
-        <Stack tokens={{ childrenGap: "l1" }}>
-          <Btn
-            title="Comprar Online"
-            href="https://www.instagram.com/festaestranhavicosa/"
-          />
-          <VidBtn
-            src={video1}
-            title="Mapa do Evento"
-            href="https://www.instagram.com/festaestranhavicosa/"
-          />
-          <Btn
-            title="Pontos de Venda"
-            href="https://www.instagram.com/festaestranhavicosa/"
-          />
-          <Btn
-            title="Página do Insta"
-            href="https://www.instagram.com/festaestranhavicosa/"
-          />
-          <Btn
-            title="Evento no Face"
-            href="https://www.instagram.com/festaestranhavicosa/"
-          />
-          <Btn
-            title="Contato"
-            href="https://www.instagram.com/festaestranhavicosa/"
-          />
-        </Stack>
+        <ProgressIndicator
+          label="1º Lote"
+          description="50% vendido"
+          percentComplete={0.5}
+        />
+        <Btn
+          title="Comprar Online"
+          href="https://www.instagram.com/festaestranhavicosa/"
+        />
+        <VidBtn
+          src={video1}
+          title="Mapa do Evento"
+          href="https://www.youtube.com/watch?v=G2mhr6s2Tv8"
+        />
+        <Btn
+          title="Pontos de Venda"
+          href="https://www.instagram.com/festaestranhavicosa/"
+        />
+        <Btn
+          title="Página do Insta"
+          href="https://www.instagram.com/festaestranhavicosa/"
+        />
+        <Btn
+          title="Evento no Face"
+          href="https://www.instagram.com/festaestranhavicosa/"
+        />
+        <Btn
+          title="Contato"
+          href="https://www.instagram.com/festaestranhavicosa/"
+        />
       </Stack>
     </Layout>
   );
