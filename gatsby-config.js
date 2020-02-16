@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Gatsby Typescript Starter`,
+    pathPrefix: `/fege`,
   },
   plugins: [
     `gatsby-plugin-fabric-ui`,
