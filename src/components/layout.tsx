@@ -6,6 +6,8 @@ import {
   createTheme,
   loadTheme,
 } from "office-ui-fabric-react/lib/Styling";
+import { Helmet } from "react-helmet";
+
 const myTheme = createTheme({
   palette: {
     themePrimary: "#380251",
@@ -32,21 +34,34 @@ const myTheme = createTheme({
     white: "#ffdb7e",
   },
 });
+
 loadTheme(myTheme);
+
 export const Layout: React.FunctionComponent = ({
   children,
 }) => {
   return (
-    <Stack horizontalAlign="center">
-      <Stack
-        tokens={{ padding: "m" }}
-        style={{
-          width: "100%",
-          maxWidth: 512,
-        }}
-      >
-        {children}
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+        <title>Festa Estranha com Gente Esquisita</title>
+      </Helmet>
+
+      <Stack horizontalAlign="center">
+        <Stack
+          tokens={{ padding: "m" }}
+          style={{
+            width: "100%",
+            maxWidth: 512,
+          }}
+        >
+          {children}
+        </Stack>
       </Stack>
-    </Stack>
+    </>
   );
 };

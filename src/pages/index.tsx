@@ -54,6 +54,7 @@ const Btn: React.FunctionComponent<{
     </OutboundLink>
   );
 };
+
 const Index: React.FunctionComponent<IndexPageProps> = () => {
   return (
     <Layout>
