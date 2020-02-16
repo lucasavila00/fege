@@ -37,8 +37,16 @@ export const Layout: React.FunctionComponent = ({
   children,
 }) => {
   return (
-    // <Customizer {...myTheme}>
-    <Stack tokens={{ padding: "m" }}>{children}</Stack>
-    // </Customizer>
+    <Stack horizontalAlign="center">
+      <Stack
+        tokens={{ padding: "m" }}
+        style={{
+          width: "100%",
+          maxWidth: 512,
+        }}
+      >
+        {children}
+      </Stack>
+    </Stack>
   );
 };
