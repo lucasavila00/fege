@@ -7,34 +7,34 @@ import {
   loadTheme,
 } from "office-ui-fabric-react/lib/Styling";
 import { Helmet } from "react-helmet";
-import logo from "./capa.jpg";
+import logo from "./capa.png";
 import { Image } from "./img";
 import { Link } from "gatsby";
 
 const myTheme = createTheme({
   palette: {
-    themePrimary: "#380251",
-    themeLighterAlt: "#e1cfea",
-    themeLighter: "#c8a7d7",
-    themeLight: "#af83c4",
-    themeTertiary: "#9863b1",
-    themeSecondary: "#82479e",
-    themeDarkAlt: "#6e308b",
-    themeDark: "#5b1c78",
-    themeDarker: "#490d65",
-    neutralLighterAlt: "#f8d47a",
-    neutralLighter: "#f4d178",
-    neutralLight: "#eac873",
-    neutralQuaternaryAlt: "#dabb6b",
-    neutralQuaternary: "#d0b266",
-    neutralTertiaryAlt: "#c8ab62",
-    neutralTertiary: "#595959",
-    neutralSecondary: "#373737",
-    neutralPrimaryAlt: "#2f2f2f",
-    neutralPrimary: "#000000",
-    neutralDark: "#151515",
-    black: "#0b0b0b",
-    white: "#ffdb7e",
+    themePrimary: "#ff7700",
+    themeLighterAlt: "#0a0500",
+    themeLighter: "#291300",
+    themeLight: "#4d2400",
+    themeTertiary: "#994700",
+    themeSecondary: "#e06900",
+    themeDarkAlt: "#ff8519",
+    themeDark: "#ff983d",
+    themeDarker: "#ffb370",
+    neutralLighterAlt: "#111132",
+    neutralLighter: "#15153a",
+    neutralLight: "#1d1d48",
+    neutralQuaternaryAlt: "#232350",
+    neutralQuaternary: "#282857",
+    neutralTertiaryAlt: "#404074",
+    neutralTertiary: "#4a3c2f",
+    neutralSecondary: "#94775d",
+    neutralPrimaryAlt: "#daaf89",
+    neutralPrimary: "#f7c79c",
+    neutralDark: "#f9d4b3",
+    black: "#fbdfc7",
+    white: "#0d0d2a",
   },
 });
 

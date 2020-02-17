@@ -4,8 +4,8 @@ import { Layout } from "../components/layout";
 import { Stack } from "office-ui-fabric-react/lib/Stack";
 import { ImagePreviewBtn } from "../components/btns";
 import { HeaderText } from "../components/common";
-import cepa from "./cepa.png";
-import rep from "./rep.png";
+import cepa from "./cepa.jpg";
+import rep from "./rep.jpg";
 
 const Pontos = () => (
   <Layout>

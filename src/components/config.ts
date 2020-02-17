@@ -4,5 +4,6 @@ export const sconfig = {
     "https://www.instagram.com/festaestranhavicosa/",
   evento:
     "https://www.facebook.com/events/2630799230330905/",
-  online: "https://www.instagram.com/festaestranhavicosa/",
+  online:
+    "https://www.sympla.com.br/festa-estranha-com-gente-esquisita---rave-dos-fluxos__794847",
 };
