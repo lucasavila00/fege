@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: `/fege`,
+  // pathPrefix: `/fege`,
   siteMetadata: {
     title: `Gatsby Typescript Starter`,
   },
