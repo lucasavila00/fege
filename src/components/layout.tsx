@@ -1,15 +1,19 @@
 import * as React from "react";
 import { Stack } from "office-ui-fabric-react/lib/Stack";
+import { Text } from "office-ui-fabric-react/lib/Text";
+import { Separator } from "office-ui-fabric-react/lib/Separator";
 import "./normalize.css";
 import "./layout.css";
 import {
   createTheme,
   loadTheme,
+  getTheme,
 } from "office-ui-fabric-react/lib/Styling";
 import { Helmet } from "react-helmet";
 import logo from "./capa.png";
 import { Image } from "./img";
 import { Link } from "gatsby";
+import { OutboundLink } from "gatsby-plugin-google-analytics";
 
 const myTheme = createTheme({
   palette: {
@@ -68,6 +72,49 @@ export const Layout: React.FunctionComponent = ({
           {children}
         </Stack>
       </Stack>
+
+      <Separator
+        styles={{
+          root: {
+            selectors: {
+              "::before": {
+                backgroundColor: getTheme().palette
+                  .themePrimary,
+              },
+            },
+          },
+        }}
+      />
+      <OutboundLink
+        href="https://lucasavila.com"
+        style={{
+          color: getTheme().palette.themePrimary,
+          textDecoration: "none",
+        }}
+      >
+        <Stack
+          tokens={{ childrenGap: "s2", padding: "m" }}
+          horizontalAlign="center"
+        >
+          <Text
+            variant={"large"}
+            style={{
+              color: getTheme().palette.themePrimary,
+            }}
+          >
+            Desenvolvido por Lucas Ávila
+          </Text>
+          <Text
+            variant={"small"}
+            style={{
+              color: getTheme().palette.themePrimary,
+              textDecoration: "underline",
+            }}
+          >
+            lucasavila.com
+          </Text>
+        </Stack>
+      </OutboundLink>
     </>
   );
 };
