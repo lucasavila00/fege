@@ -17,9 +17,14 @@ const Index: React.FunctionComponent = () => {
     <Layout>
       <Stack tokens={{ childrenGap: "m" }}>
         <ProgressIndicator
-          label="Lote Promocional (R$10)"
-          description="Início das vendas dia 03/03 às 12h (Itaú - UFV)"
-          percentComplete={0}
+          label="Quarto Lote Promocional (R$25)"
+          description="80% vendido"
+          percentComplete={0.8}
+        />
+        <ProgressIndicator
+          label="Ingressos totais"
+          description="592/2000"
+          percentComplete={592 / 2000}
         />
         <OutboundBtn
           title="Compre Online"
