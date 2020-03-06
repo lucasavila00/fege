@@ -18,13 +18,13 @@ const Index: React.FunctionComponent = () => {
       <Stack tokens={{ childrenGap: "m" }}>
         <ProgressIndicator
           label="Primeiro Lote (R$30)"
-          description="1% vendido"
-          percentComplete={0.1}
+          description="78% vendido"
+          percentComplete={0.78}
         />
         <ProgressIndicator
           label="Ingressos totais"
-          description="1281/2000"
-          percentComplete={1281 / 2000}
+          description="1365/2000"
+          percentComplete={1365 / 2000}
         />
         <OutboundBtn
           title="Compre Online"
