@@ -3,7 +3,8 @@ const path = require(`path`);
 module.exports = {
   // pathPrefix: `/fege`,
   siteMetadata: {
-    title: `Gatsby Typescript Starter`,
+    title: "Festa Estranha com Gente Esquisita",
+    siteUrl: `https://festaestranha.com`,
   },
   plugins: [
     {
