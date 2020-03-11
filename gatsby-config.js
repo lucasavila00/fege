@@ -1,3 +1,5 @@
+const path = require(`path`);
+
 module.exports = {
   // pathPrefix: `/fege`,
   siteMetadata: {
@@ -13,5 +15,14 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     // Add typescript stack into webpack
     `gatsby-plugin-typescript`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: path.join(__dirname, `src`, `images`),
+      },
+    },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
   ],
 };

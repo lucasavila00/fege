@@ -10,10 +10,10 @@ import {
   getTheme,
 } from "office-ui-fabric-react/lib/Styling";
 import { Helmet } from "react-helmet";
-import logo from "./capa.png";
-import { Image } from "./img";
 import { Link } from "gatsby";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
+import { useStaticQuery, graphql } from "gatsby";
+import Img from "gatsby-image";
 
 const myTheme = createTheme({
   palette: {
@@ -47,6 +47,20 @@ loadTheme(myTheme);
 export const Layout: React.FunctionComponent = ({
   children,
 }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "capa.png" }) {
+        childImageSharp {
+          # Specify a fluid image and fragment
+          # The default maxWidth is 800 pixels
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `);
+
   return (
     <>
       <Helmet>
@@ -67,7 +81,10 @@ export const Layout: React.FunctionComponent = ({
           }}
         >
           <Link to="/">
-            <Image src={logo} />
+            <Img
+              fluid={data.file.childImageSharp.fluid}
+              alt="Logotipo da festa"
+            />
           </Link>
           {children}
         </Stack>

@@ -1,10 +1,10 @@
 import * as React from "react";
 import { PrimaryButton } from "office-ui-fabric-react/lib/Button";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
-import { Link } from "gatsby";
-import play from "./play.png";
+import { Link, useStaticQuery, graphql } from "gatsby";
 import { getTheme } from "office-ui-fabric-react/lib/Styling";
-import { Image } from "./img";
+import Img from "gatsby-image";
+
 export const OutboundBtn: React.FunctionComponent<{
   title: string;
   href: string;
@@ -36,6 +36,19 @@ export const ImagePreviewBtn: React.FunctionComponent<{
   src: any;
   showPlay: boolean;
 }> = ({ title, href, src, showPlay }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      play: file(relativePath: { eq: "play.png" }) {
+        childImageSharp {
+          # Specify a fixed image and fragment.
+          # The default width is 400 pixels
+          fixed(width: 96, height: 96) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `);
   return (
     <OutboundLink href={href} style={{ width: "100%" }}>
       <div
@@ -66,16 +79,16 @@ export const ImagePreviewBtn: React.FunctionComponent<{
                 height: "100%",
               }}
             >
-              <img
-                src={play}
+              <Img
+                fixed={data.play.childImageSharp.fixed}
+                alt="Reproduzir vídeo"
                 style={{
-                  height: 96,
-                  width: 96,
+                  zIndex: 999,
                 }}
               />
             </div>
           )}
-          <Image src={src} />
+          <Img fluid={src} alt={title} />
         </div>
         <PrimaryButton
           style={{ width: "100%", borderRadius: 0 }}

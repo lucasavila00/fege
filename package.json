@@ -9,10 +9,14 @@
     "@types/react-dom": "16.9.5",
     "@types/react-helmet": "^5.0.15",
     "gatsby": "^2.19.17",
+    "gatsby-image": "^2.2.43",
     "gatsby-link": "^2.2.29",
     "gatsby-plugin-google-analytics": "^2.1.35",
     "gatsby-plugin-react-helmet": "^3.1.22",
+    "gatsby-plugin-sharp": "^2.4.10",
     "gatsby-plugin-typescript": "^2.1.27",
+    "gatsby-source-filesystem": "^2.1.52",
+    "gatsby-transformer-sharp": "^2.3.18",
     "office-ui-fabric-react": "^7.93.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -27,8 +31,7 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --parser typescript --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.ts*\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "pb": "rm -rf docs && mkdir docs && cp -R public/ docs/"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "prettier": "^1.19.1"
