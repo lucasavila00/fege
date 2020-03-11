@@ -84,13 +84,15 @@ export const Layout: React.FunctionComponent = ({
             maxWidth: 512,
           }}
         >
+          {/* <heading> */}
           <Link to="/">
             <Img
               fluid={data.file.childImageSharp.fluid}
               alt="Logotipo da festa"
             />
           </Link>
-          {children}
+          {/* </heading> */}
+          <main>{children}</main>
         </Stack>
       </Stack>
 
