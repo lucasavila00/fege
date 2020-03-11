@@ -7,24 +7,37 @@ import { getTheme } from "office-ui-fabric-react/lib/Styling";
 import { Checkbox } from "office-ui-fabric-react/lib/Checkbox";
 import firebase from "gatsby-plugin-firebase";
 import { useEffect, useState } from "react";
-
+const defaultRegistration = {
+  token: null as string | null,
+  registered: false,
+};
 export const Fcm: React.FunctionComponent = () => {
-  const [key, setKey] = useState(0);
-  const setRegisteredTrue = () => {
+  const [loading, setLoading] = useState(false);
+  const setRegisteredTrue = (token: string) => {
+    console.log({ token });
     setRegistered(true);
     // salva no localstorage
-    localStorage.setItem("registered", String(true));
+    const registration: typeof defaultRegistration = {
+      token,
+      registered: true,
+    };
+    localStorage.setItem(
+      "registration",
+      JSON.stringify(registration),
+    );
   };
-  const isRegistered = () => {
+  const getRegistration = (): typeof defaultRegistration => {
     if (typeof window == "undefined") {
-      return false;
+      return defaultRegistration;
     }
-    return Boolean(
-      localStorage.getItem("registered") ?? false,
+    return (
+      JSON.parse(
+        localStorage.getItem("registration") ?? "null",
+      ) ?? defaultRegistration
     );
   };
   const [registered, setRegistered] = useState(
-    isRegistered(),
+    getRegistration().registered,
   );
   const [error, setError] = useState(false);
   const [
@@ -33,25 +46,45 @@ export const Fcm: React.FunctionComponent = () => {
   ] = useState(false);
   useEffect(() => {
     const messaging = firebase.messaging();
-    // messaging.usePublicVapidKey(
-    //   "BO3sAUZ7udDO4VykzjTwOGHqOmcVKiLB2VIcyPimkvQ2AGSMzeDxamTngK41QAUNmyUJgGrsHe_y6rs8Ctnh9Sc",
-    // );
     messaging.onMessage((payload) => {
       console.log("Message received. ", payload);
       // ...
     });
+    messaging.onTokenRefresh(() => {
+      messaging
+        .getToken()
+        .then((refreshedToken) => {
+          console.log("Token refreshed.");
+          // Indicate that the new Instance ID token has not yet been sent to the
+          // app server.
+          // setTokenSentToServer(false);
+          // // Send Instance ID token to app server.
+          // sendTokenToServer(refreshedToken);
+          // ...
+          setRegisteredTrue(refreshedToken);
+        })
+        .catch((err) => {
+          console.log(
+            "Unable to retrieve refreshed token ",
+            err,
+          );
+          // showToken('Unable to retrieve refreshed token ', err);
+          setError(true);
+        });
+    });
   }, []);
 
   const onRegisterClub = () => {
+    setLoading(true);
     const messaging = firebase.messaging();
+
     messaging
       .getToken()
       .then((currentToken) => {
         if (currentToken) {
-          console.log({ currentToken });
           // sendTokenToServer(currentToken);
           // updateUIForPushEnabled(currentToken);
-          setRegisteredTrue();
+          setRegisteredTrue(currentToken);
         } else {
           // Show permission request.
           console.log(
@@ -62,8 +95,6 @@ export const Fcm: React.FunctionComponent = () => {
           // updateUIForPushPermissionRequired();
           // setTokenSentToServer(false);
         }
-
-        setKey((k) => k + 1);
       })
       .catch((err) => {
         console.log(
@@ -73,10 +104,11 @@ export const Fcm: React.FunctionComponent = () => {
         setError(true);
         // showToken('Error retrieving Instance ID token. ', err);
         // setTokenSentToServer(false);
-        setKey((k) => k + 1);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
-  console.log({ registered });
   return (
     <Stack
       tokens={{ childrenGap: "m" }}
@@ -131,8 +163,8 @@ export const Fcm: React.FunctionComponent = () => {
         <Checkbox
           label={"Participar do Clube de Descontos"}
           checked={registered}
+          disabled={loading}
           onChange={onRegisterClub}
-          key={String(key)}
         />
       </Stack>
     </Stack>
