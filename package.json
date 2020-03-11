@@ -15,6 +15,7 @@
     "gatsby-plugin-html-attributes": "^1.0.5",
     "gatsby-plugin-react-helmet": "^3.1.22",
     "gatsby-plugin-sharp": "^2.4.10",
+    "gatsby-plugin-sitemap": "^2.2.28",
     "gatsby-plugin-typescript": "^2.1.27",
     "gatsby-source-filesystem": "^2.1.52",
     "gatsby-transformer-sharp": "^2.3.18",
