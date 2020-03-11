@@ -44,9 +44,9 @@ const myTheme = createTheme({
 
 loadTheme(myTheme);
 
-export const Layout: React.FunctionComponent = ({
-  children,
-}) => {
+export const Layout: React.FunctionComponent<{
+  title: string;
+}> = ({ children, title }) => {
   const data = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "capa.png" }) {
@@ -60,20 +60,45 @@ export const Layout: React.FunctionComponent = ({
       }
     }
   `);
-
+  const description =
+    "Festa Universitária de Viçosa - MG. Sempre com aquele precinho diferenciado!";
+  const imageUrl = "/logo.png";
+  const siteUrl = "https://festaestranha.com";
   return (
     <>
-      <Helmet>
+      <Helmet title={title}>
         <meta charSet="utf-8" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
         />
-        <title>Festa Estranha com Gente Esquisita</title>
+        <meta name="description" content={description} />
+        <meta name="image" content={imageUrl} />
+        <meta property="og:url" content={siteUrl} />
+        <meta property="og:title" content={title} />
         <meta
-          name="Description"
-          content="Festa Universitária de Viçosa - MG. Sempre com aquele precinho diferenciado!"
+          property="og:description"
+          content={description}
         />
+        <meta property="og:image" content={imageUrl} />
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+        />
+        <meta name="twitter:title" content={title} />
+        <meta
+          name="twitter:description"
+          content={description}
+        />
+        <meta name="twitter:image" content={imageUrl} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            url: siteUrl,
+            name: title,
+          })}
+        </script>
       </Helmet>
 
       <Stack horizontalAlign="center">
@@ -84,14 +109,12 @@ export const Layout: React.FunctionComponent = ({
             maxWidth: 512,
           }}
         >
-          {/* <heading> */}
           <Link to="/">
             <Img
               fluid={data.file.childImageSharp.fluid}
               alt="Logotipo da festa"
             />
           </Link>
-          {/* </heading> */}
           <main>{children}</main>
         </Stack>
       </Stack>

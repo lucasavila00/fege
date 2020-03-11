@@ -27,7 +27,7 @@ const Pontos = () => {
   `);
 
   return (
-    <Layout>
+    <Layout title="Pontos de Vendas - Festa Estranha com Gente Esquisita">
       <Stack
         verticalAlign="center"
         horizontalAlign="center"

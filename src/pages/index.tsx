@@ -28,7 +28,7 @@ const Index: React.FunctionComponent = () => {
   `);
 
   return (
-    <Layout>
+    <Layout title="Festa Estranha com Gente Esquisita">
       <Stack tokens={{ childrenGap: "m" }}>
         {/* <ProgressIndicator
           label="Primeiro Lote (R$30)"

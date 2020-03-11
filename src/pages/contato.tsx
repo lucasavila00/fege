@@ -6,7 +6,7 @@ import { OutboundBtn } from "../components/btns";
 import { HeaderText } from "../components/common";
 
 const Contato = () => (
-  <Layout>
+  <Layout title="Contato - Festa Estranha com Gente Esquisita">
     <Stack
       verticalAlign="center"
       horizontalAlign="center"
