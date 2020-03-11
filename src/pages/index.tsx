@@ -11,6 +11,8 @@ import {
 import { sconfig } from "../components/config";
 import { getTheme } from "office-ui-fabric-react/lib/Styling";
 import { useStaticQuery, graphql } from "gatsby";
+// import { PrimaryButton } from "office-ui-fabric-react/lib/Button";
+import { Fcm } from "../components/fcm";
 
 const Index: React.FunctionComponent = () => {
   const data = useStaticQuery(graphql`
@@ -30,6 +32,7 @@ const Index: React.FunctionComponent = () => {
   return (
     <Layout title="Festa Estranha com Gente Esquisita">
       <Stack tokens={{ childrenGap: "m" }}>
+        <Fcm />
         {/* <ProgressIndicator
           label="Primeiro Lote (R$30)"
           description="78% vendido"

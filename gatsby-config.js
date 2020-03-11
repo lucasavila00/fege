@@ -32,5 +32,21 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sitemap`,
+    {
+      resolve: "gatsby-plugin-firebase",
+      options: {
+        credentials: {
+          apiKey: "AIzaSyDzx-fbEtEdJNWccWSCxghmmvXe1N5n-fE",
+          authDomain: "fegefcm.firebaseapp.com",
+          databaseURL: "https://fegefcm.firebaseio.com",
+          projectId: "fegefcm",
+          storageBucket: "fegefcm.appspot.com",
+          messagingSenderId: "122787219484",
+          appId:
+            "1:122787219484:web:510f09c844905ffbd537d9",
+          measurementId: "G-DEP53PWGQV",
+        },
+      },
+    },
   ],
 };

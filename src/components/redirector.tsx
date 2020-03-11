@@ -20,7 +20,7 @@ export const Redirector: React.FunctionComponent<{
     });
   }, []);
   return (
-    <Layout>
+    <Layout title="Festa Estranha com Gente Esquisita">
       <Stack
         verticalAlign="center"
         horizontalAlign="center"
