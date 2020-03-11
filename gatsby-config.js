@@ -7,6 +7,12 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: "gatsby-plugin-html-attributes",
+      options: {
+        lang: "pt-br",
+      },
+    },
+    {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: "UA-158633600-1",
