@@ -67,7 +67,7 @@ export const Layout: React.FunctionComponent = ({
         <meta charSet="utf-8" />
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+          content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
         />
         <title>Festa Estranha com Gente Esquisita</title>
         <meta
