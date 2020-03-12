@@ -195,7 +195,6 @@ export const Fcm: React.FunctionComponent = () => {
           label={"Participar do Clube de Descontos"}
           checked={registered}
           disabled={loading}
-          defaultChecked={registered}
           onChange={onRegisterClub}
         />
       </Stack>
