@@ -12,6 +12,45 @@ const defaultRegistration = {
   token: null as string | null,
   registered: false,
 };
+
+const CustomCheckBox: React.FunctionComponent<{
+  checked: boolean;
+}> = ({ checked }) => {
+  const commonStyle: React.CSSProperties = {
+    width: 20,
+    height: 20,
+    borderRadius: 4,
+    borderStyle: "solid",
+    borderWidth: 2,
+    borderColor: getTheme().palette.themePrimary,
+  };
+  if (checked) {
+    const checkedStyle: React.CSSProperties = {
+      backgroundColor: getTheme().palette.themePrimary,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    };
+    return (
+      <div style={{ ...commonStyle, ...checkedStyle }}>
+        <svg
+          fill={getTheme().palette.white}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="16px"
+          height="16px"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M 22.59375 3.5 L 8.0625 18.1875 L 1.40625 11.5625 L 0 13 L 8.0625 21 L 24 4.9375 Z"
+          />
+        </svg>
+      </div>
+    );
+  } else {
+    return <div style={{ ...commonStyle }}></div>;
+  }
+};
 export const Fcm: React.FunctionComponent = () => {
   const [loading, setLoading] = useState(false);
   const setRegisteredTrue = (token: string) => {
@@ -35,8 +74,6 @@ export const Fcm: React.FunctionComponent = () => {
       JSON.parse(
         localStorage.getItem("registration") ?? "null",
       ) ?? defaultRegistration;
-
-    console.log({ stored });
 
     return stored;
   };
@@ -132,7 +169,6 @@ export const Fcm: React.FunctionComponent = () => {
         setLoading(false);
       });
   };
-  console.log({ registered });
   return (
     <Stack
       tokens={{ childrenGap: "m" }}
@@ -191,13 +227,24 @@ export const Fcm: React.FunctionComponent = () => {
           notificações.
         </Text>
       )}
-      <Stack style={{ width: "100%" }}>
-        <Checkbox
-          label={"Participar do Clube de Descontos"}
-          checked={true}
-          disabled={loading}
-          onChange={onRegisterClub}
-        />
+      <Stack
+        style={{ width: "100%", cursor: "pointer" }}
+        onClick={onRegisterClub}
+        horizontal={true}
+        tokens={{ childrenGap: "s1" }}
+        verticalAlign="center"
+      >
+        <CustomCheckBox checked={registered} />
+        <Text
+          variant="large"
+          style={{
+            color: loading
+              ? getTheme().palette.themeLight
+              : getTheme().palette.themeDarker,
+          }}
+        >
+          Participar do Clube de Descontos
+        </Text>
       </Stack>
     </Stack>
   );
