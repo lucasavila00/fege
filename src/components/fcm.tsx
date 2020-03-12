@@ -31,11 +31,14 @@ export const Fcm: React.FunctionComponent = () => {
     if (typeof window == "undefined") {
       return defaultRegistration;
     }
-    return (
+    const stored =
       JSON.parse(
         localStorage.getItem("registration") ?? "null",
-      ) ?? defaultRegistration
-    );
+      ) ?? defaultRegistration;
+
+    console.log({ stored });
+
+    return stored;
   };
   const [registered, setRegistered] = useState(
     getRegistration().registered,
