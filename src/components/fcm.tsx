@@ -191,12 +191,23 @@ export const Fcm: React.FunctionComponent = () => {
         </Text>
       )}
       <Stack style={{ width: "100%" }}>
-        <Checkbox
-          label={"Participar do Clube de Descontos"}
-          checked={registered}
-          disabled={loading}
-          onChange={onRegisterClub}
-        />
+        {registered ? (
+          <Checkbox
+            label={"Participando do Clube de Descontos"}
+            checked={true}
+            key="participando"
+            disabled={loading}
+            onChange={onRegisterClub}
+          />
+        ) : (
+          <Checkbox
+            label={"Participar do Clube de Descontos"}
+            key="participar"
+            checked={false}
+            disabled={loading}
+            onChange={onRegisterClub}
+          />
+        )}
       </Stack>
     </Stack>
   );
