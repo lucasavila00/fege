@@ -191,13 +191,10 @@ export const Fcm: React.FunctionComponent = () => {
           notificações.
         </Text>
       )}
-      <Stack
-        style={{ width: "100%" }}
-        key={registered ? "reg" : "nreg"}
-      >
+      <Stack style={{ width: "100%" }}>
         <Checkbox
           label={"Participar do Clube de Descontos"}
-          checked={registered}
+          checked={true}
           disabled={loading}
           onChange={onRegisterClub}
         />
