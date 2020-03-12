@@ -7,6 +7,7 @@ import { getTheme } from "office-ui-fabric-react/lib/Styling";
 import { Checkbox } from "office-ui-fabric-react/lib/Checkbox";
 import firebase from "gatsby-plugin-firebase";
 import { useEffect, useState } from "react";
+import { PrimaryButton } from "office-ui-fabric-react/lib/components/Button";
 const defaultRegistration = {
   token: null as string | null,
   registered: false,
@@ -73,7 +74,25 @@ export const Fcm: React.FunctionComponent = () => {
         });
     });
   }, []);
-
+  const requestPermissionCb = () => {
+    console.log("Requesting permission...");
+    // [START request_permission]
+    Notification.requestPermission().then((permission) => {
+      if (permission === "granted") {
+        // In many cases once an app has been granted notification permission,
+        // it should update its UI reflecting this.
+        console.log("Notification permission granted.");
+        setRequestPermission(false);
+        setError(false);
+        onRegisterClub();
+      } else {
+        setRequestPermission(false);
+        setError(true);
+        console.log("Unable to get permission to notify.");
+      }
+    });
+    // [END request_permission]
+  };
   const onRegisterClub = () => {
     setLoading(true);
     const messaging = firebase.messaging();
@@ -109,6 +128,7 @@ export const Fcm: React.FunctionComponent = () => {
         setLoading(false);
       });
   };
+  console.log({ registered });
   return (
     <Stack
       tokens={{ childrenGap: "m" }}
@@ -134,19 +154,27 @@ export const Fcm: React.FunctionComponent = () => {
         <b>sorteios</b> e ainda ganhar <b>descontos</b> nos
         ingressos?
       </Text>
-      {/* <PrimaryButton style={{ width: "100%" }}>
-      Quero entrar no Clube de Descontos
-    </PrimaryButton> */}
       {requestPermission && (
-        <Text
-          variant={"medium"}
-          style={{
-            color: getTheme().palette.themePrimary,
-          }}
+        <Stack
+          style={{ width: "100%" }}
+          tokens={{ childrenGap: "m" }}
         >
-          <b>Atenção: </b> Ative a permissão para receber
-          notificações!
-        </Text>
+          <Text
+            variant={"medium"}
+            style={{
+              color: getTheme().palette.themePrimary,
+            }}
+          >
+            <b>Atenção: </b> Ative a permissão para receber
+            notificações!
+          </Text>
+          <PrimaryButton
+            style={{ width: "100%" }}
+            onClick={requestPermissionCb}
+          >
+            Ativar notificações
+          </PrimaryButton>
+        </Stack>
       )}
       {error && (
         <Text
