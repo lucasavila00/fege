@@ -40,9 +40,10 @@ export const Fcm: React.FunctionComponent = () => {
 
     return stored;
   };
-  const [registered, setRegistered] = useState(
-    getRegistration().registered,
-  );
+  const [registered, setRegistered] = useState(false);
+  useEffect(() => {
+    setRegistered(getRegistration().registered);
+  });
   const [error, setError] = useState(false);
   const [
     requestPermission,
